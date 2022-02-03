@@ -1,14 +1,24 @@
 {
+  "name": "frontend-cupgames",
+  "version": "1.0.0",
+  "description": "",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start"
   },
+  "keywords": [],
+  "author": "Newton Miranda <newton.chickengopro@gmail.com>",
+  "license": "MIT",
   "dependencies": {
+    "axios": "^0.25.0",
     "next": "latest",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "react-hook-form": "^7.25.3",
+    "styled-components": "^5.3.3",
+    "tailwind-styled-components": "^2.1.4"
   },
   "devDependencies": {
     "@types/node": "17.0.4",

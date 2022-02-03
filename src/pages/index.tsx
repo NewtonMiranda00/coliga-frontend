@@ -1,12 +1,17 @@
-import Head from 'next/head';
+import { Container, H1, H2 } from '../styles/tw/global';
+
 import Tournament from '../components/Tournament';
+import Button from '../components/global/Button';
+
 import { PropsTournament } from '../interfaces';
+
+import '../services';
 
 export default function Home() {
   const Tournaments = [
     {
       name: 'League Of Legends',
-      UrlTag: 'lol'
+      UrlTag: 'league-of-legends'
     }
   ];
 
@@ -25,24 +30,34 @@ export default function Home() {
   }
 
   return (
-    <div className={`
-      flex min-h-screen flex-col 
-      items-center justify-center py-2
-      bg-gray-900 
-      text-white text-sm
-      overflow-hidden
-      
-      ss:text-base 
-    `}>
-      <Head>
-        <title>Cup Legends Online</title>
-        <link rel="icon" href="/favicon.png" />
-      </Head>
+    <Container>
+      <H1>CoLiga E-Sports</H1>
+      <H2>Hub de Campeonatos</H2>
 
-      
-      <div className={`flex`}>
+      <div className={`flex m-5`}>
         {renderItems(Tournaments)}
       </div>
-    </div>
-  )
+
+      <div className={`
+        flex flex-col justify-center items-center
+        w-32
+
+        ss:w-40
+      `}>
+        <Button 
+          type='url'
+          text='Login'
+          href='/login'
+          className='rounded'
+        />    
+
+        <Button 
+          type='url'
+          text='Registrar'
+          href='/register'
+          className='rounded'
+        />
+      </div>
+    </Container>
+  );
 }

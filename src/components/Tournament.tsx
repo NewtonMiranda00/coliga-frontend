@@ -1,7 +1,6 @@
-import Button from './Button';
+import Button from './global/Button';
 import { PropsTournament } from '../interfaces';
 
-// Falta responsividade
 export default function Tournament({ name, UrlTag }: PropsTournament) {
   return (
     <div className={`
@@ -20,7 +19,6 @@ export default function Tournament({ name, UrlTag }: PropsTournament) {
               name.toLowerCase().split(' ').join('-')
             }.png
           `}
-
           alt={`Logo ${name}`}
         />
       </div>
@@ -28,19 +26,7 @@ export default function Tournament({ name, UrlTag }: PropsTournament) {
         type='url'
         text='Ver campeonatos'
         href={`/tournaments/${UrlTag}`}
-      />
-
-      <Button 
-        type='url'
-        text='Login'
-        href='/'
-      />    
-
-      <Button 
-        type='url'
-        text='Registrar'
-        href='/'
-      />  
+      />   
     </div>
   );
 }
