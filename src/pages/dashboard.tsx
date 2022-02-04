@@ -38,7 +38,7 @@ export default function User() {
           text='Logout'
           onClick={logout}
           color='gray'
-          className={`w-[150px]`}
+          className={` w-[120px] ss:w-[200px]`}
         />
       </div>
     </Container>
