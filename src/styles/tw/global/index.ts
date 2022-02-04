@@ -12,13 +12,11 @@ export const Container = tw.div`
 
 export const H1 = tw.h1`
   text-3xl
-  ss:absolute ss:top-10
   ss:text-4xl
 `;
 
 export const H2 = tw.h2`
   underline
-  ss:absolute ss:top-20
   ss:text-lg
 `;
 

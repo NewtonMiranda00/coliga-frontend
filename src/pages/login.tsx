@@ -1,5 +1,7 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useForm } from 'react-hook-form';
+
+import { AuthContext } from "../context/AuthContext"; 
 
 import { Container, H1, H2 } from "../styles/tw/global";
 
@@ -7,6 +9,8 @@ import Input from "../components/global/Input";
 import Button from "../components/global/Button";
 import CheckBox from "../components/global/CheckBox";
 import A from "../components/global/A";
+import { parseCookies } from "nookies";
+import { GetServerSideProps } from "next";
 
 interface PropsSignIn {
   email: string;
@@ -15,10 +19,15 @@ interface PropsSignIn {
 
 export default function Login() {
   const { register, handleSubmit } = useForm<PropsSignIn>();
+  const { signIn } = useContext(AuthContext);
   const [ remenber, setRemenber ] = useState<Boolean>(false);
 
-  function handleSignIn(data: PropsSignIn) {
-    console.log(data)
+  async function handleSignIn(data: PropsSignIn) {
+    try {
+      await signIn(data);
+    } catch (error) {
+      
+    }
   }
 
   return (
@@ -89,4 +98,22 @@ export default function Login() {
       </form>
     </Container>
   );
+}
+
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const { token } = parseCookies(ctx);
+
+  if (token) {
+    return {
+      props: {},
+      redirect: {
+        destination: '/dashboard',
+        permanent: false
+      }
+    }
+  }
+
+  return {
+    props: {}
+  }
 }
